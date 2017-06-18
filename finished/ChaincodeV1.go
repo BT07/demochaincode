@@ -21,19 +21,19 @@ const (
  
             }
  
-type SampleChaincode struct {
+type SimpleChaincode struct {
 }
 
 
 func main() {
-	err := shim.Start(new(SampleChaincode))
+	err := shim.Start(new(SimpleChaincode))
 	if err != nil {
 		fmt.Printf("Error starting Simple chaincode: %s", err)
 	}
 }
 
 //INIT
-func (t *SampleChaincode) Init(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 	key := UserPrefix + args[0]
         
 	if len(args) != 2 {
@@ -51,7 +51,7 @@ func (t *SampleChaincode) Init(stub shim.ChaincodeStubInterface, args []string) 
 
 //WRITE
 
-func (t *SampleChaincode) write(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
                 var err error
                 var rtype string
                 fmt.Println("running write()")
@@ -82,7 +82,7 @@ func (t *SampleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
 }
 
 //INVOKE
-func (t *SampleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
+func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	fmt.Println("invoke is running " + function)
 
 	// Handle different functions
