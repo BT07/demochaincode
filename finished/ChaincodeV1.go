@@ -33,7 +33,7 @@ func main() {
 }
 
 //INIT
-func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, args []string) error {
+func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
 	key := UserPrefix + args[0]
         
 	if len(args) != 2 {
@@ -43,10 +43,10 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, args []string) 
 	err := stub.PutState(key, []byte(args[1]))
 	if err != nil {
 		fmt.Errorf(err.Error())
-		return err
+		return nil,err
 	}
 	fmt.Printf("store user:%s sucessfully", key)
-	return nil
+	return nil,nil
 }
 
 //WRITE
