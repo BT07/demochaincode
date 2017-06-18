@@ -57,7 +57,7 @@ func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string)
                 fmt.Println("running write()")
  
                 if len(args) != 4{
-                                return nil, errors.New("Incorrect number of arguments. Expecting 3. name of the key and value to set")
+                                return nil, errors.New("Incorrect number of arguments. Expecting 4. name of the key and value to set")
                 }
  
                 m_patient := &Patient{}
