@@ -53,7 +53,7 @@ func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface,function string,
 
 func (t *SimpleChaincode) write(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
                 var err error
-                var rtype string
+           
                 fmt.Println("running write()")
  
                 if len(args) != 4{
