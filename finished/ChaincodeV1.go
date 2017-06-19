@@ -33,7 +33,7 @@ func main() {
 }
 
 //INIT
-func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, args []string) ([]byte, error) {
+func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface,function string, args []string) ([]byte, error) {
 	key := UserPrefix + args[0]
         
 	if len(args) != 2 {
@@ -87,7 +87,7 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 
 	// Handle different functions
 	if function == "init" {
-		return t.Init(stub, args)
+		return t.Init(stub,"init", args)
 	} else if function == "write" {
 		return t.write(stub, args)
 	}
